@@ -1,0 +1,15 @@
+{
+  "name": "ezilly",
+  "engines": {
+    "node": "=20"
+  },
+  "version": "1.0.0",
+  "description": "",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "eslint": "^8.57.0",
+    "eslint-config-airbnb": "^19.0.4"
+  }
+}

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="cs" theme="dark">
+	<head>
+		<meta charset="UTF-8"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+		<title>Sledujte skvělé filmy a seriály | CANAL&#x2B;</title>
+		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="https://m7cdn.io/common/css/external/external.css"/>
+		<link rel="stylesheet" type="text/css" href="assets/main.css"/>
+		<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+		<script src="app.js" defer></script>
+	</head>
+<body>
+	<div id="app" class="styles__ext pt-20 pb-10">
+		<section
+			v-for="(item, key) in fetchedData"
+			:key="key"
+			:id="key"
+			class="c-section !pt-0 !pb-0"
+		>
+			<h2 v-if="key !== 'spotlight'" class="font-type-text px-2">
+				{{ item.data.title }}
+			</h2>
+
+			<div class="gap-2 flex flex-wrap relative px-2 w-full">
+				<i
+					class="chevron-left arrow-top material-icons absolute left-0 z-20 text-[30px] bg-grey-800 text-grey-500 opacity-80 hover:opacity-100 hover:text-white transition-all cursor-pointer h-10 w-10 text-center leading-10"
+					:class="{'-mt-5': key !== 'spotlight'}"
+				>
+					keyboard_arrow_left
+				</i>
+
+				<i
+					class="chevron-right arrow-top material-icons absolute right-0 z-20 text-[30px] bg-grey-800 text-grey-500 opacity-80 hover:opacity-100 hover:text-white transition-all cursor-pointer h-10 w-10 text-center leading-10"
+					:class="{'-mt-5': key !== 'spotlight'}"
+				>
+					keyboard_arrow_right
+				</i>
+
+				<div v-if="fetchedData" id="hits_813254597" class="c-section__slider pr-base c-section__columns w-full flex">
+					<div
+						v-for="asset in item.data.assets"
+						:key="asset.id"
+						class="w-full shrink-0 c-section__columns-item self-start text-start movie"
+						:class="{
+								'lg:w-2/12': item.imageType === 0,
+								'lg:w-6/12': item.imageType === 1
+							}"
+						:comp-title="asset.title"
+					>
+						<div class="w-full relative">
+							<a :href="`https://livetv.hdaustria.at/asset/${asset.id}`" class="!block">
+								<img
+									loading="lazy"
+									:class="`block o-img w-full aspect-[${item.imageType === 1 ? '16/9' : '3/4'}]`"
+									:title="asset.title"
+									:alt="asset.title"
+									:src="handleImageUrl(asset.images[item.imageType].url)"
+									width="100"
+									height="100"
+								/>
+
+								<div v-if="asset.params.newlyAdded" class="movie__label">
+									New
+								</div>
+
+								<h3 v-if="key !== 'spotlight'" class="text-[12px] movie__title">
+									{{ asset.title }}
+								</h3>
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+	</div>
+</body>
+</html>

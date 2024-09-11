@@ -1,0 +1,29 @@
+.c-section + .c-section {
+    margin-top: 48px;
+}
+
+.movie__title {
+    text-transform: capitalize !important;
+    font-weight: bold !important;
+    margin-bottom: 0 !important;
+}
+
+.movie__label {
+    position: absolute;
+    top: .25rem;
+    right: .25rem;
+    padding: 0 .25rem;
+    color: #ffffff;
+    font-size: .75rem;
+    border-radius: .25rem;
+    background: #f6451f;
+}
+
+.movie + .movie {
+    margin-left: 1rem;
+}
+
+.arrow-top {
+    top: 50%;
+    transform: translateY(-50%);
+}
